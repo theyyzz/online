@@ -1,0 +1,1 @@
+"O:10:\"Connection\":4:{s:18:\"\u0000Connection\u0000server\";s:9:\"localhost\";s:20:\"\u0000Connection\u0000username\";s:4:\"root\";s:20:\"\u0000Connection\u0000password\";s:0:\"\";s:14:\"\u0000Connection\u0000db\";s:3:\"all\";}"
