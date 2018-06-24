@@ -17,6 +17,5 @@ class test extends  Redis
 
 }
 
-$pp=new test();
 
 
