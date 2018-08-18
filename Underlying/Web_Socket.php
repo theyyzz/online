@@ -133,7 +133,7 @@ class Web_Socket {
     public function push(string $fd,string $message)
     {
         $msg = $this->frame($message);
-        socket_write($this->fd[$fd]['socket'], $message, strlen($msg));
+        socket_write($this->fd[$fd]['socket'], $msg, strlen($msg));
     }
 
     /**
@@ -165,7 +165,7 @@ class Web_Socket {
      * @param string $buffer
      * @return string $decoded
      */
-    private function decode(string $buffer): string
+    private function decode(string $buffer)
     {
         $len = $masks = $data = $decoded = null;
         $len = ord($buffer[1]) & 127;
@@ -193,9 +193,10 @@ class Web_Socket {
      * @param string $message
      * @return string $ns
      */
-    private function frame(string $message): int
+    private function frame(string $message)
     {
         $a = str_split($message, 125);
+        var_dump($a);
         if (count($a) == 1) {
             return "\x81" . chr(strlen($a[0])) . $a[0];
         }
@@ -211,7 +212,7 @@ class Web_Socket {
      * @param string $req
      * @return array
      */
-    private function header(string $req): array
+    private function header(string $req)
     {
         $r = $h = $o = $key = null;
         if (preg_match("/GET (.*) HTTP/"              ,$req,$match)) { $r = $match[1]; }
@@ -226,7 +227,7 @@ class Web_Socket {
      * @param string $key
      * @return  string $accept
      */
-    private function calcKey(string $key): string
+    private function calcKey(string $key)
     {
         //基于websocket version 13
         $accept = base64_encode(sha1($key . '258EAFA5-E914-47DA-95CA-C5AB0DC85B11', true));
@@ -252,7 +253,7 @@ class Web_Socket {
      * @param resource $socket
      * @return string or string
      * */
-    private function search($socket): string
+    private function search($socket)
     {
         foreach ($this->fd as $k=>$v){
             if($socket==$v['socket'])
