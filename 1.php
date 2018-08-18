@@ -9,5 +9,4 @@ $config=file('.config');
 foreach($config as $key =>$value){
     putenv($value);
 }
-echo "test";
 var_dump(getenv('ALL_NAME'));
