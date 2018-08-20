@@ -21,7 +21,7 @@ class Chat_Realization_Handler
      * @param int $port
      * @return void No value is returned.
      */
-    public function __construct(string $address,int $port)
+    public function __construct($address, $port)
     {
         $this->server=new Web_Socket($address, $port);
 
@@ -33,7 +33,7 @@ class Chat_Realization_Handler
      * @param string $message
      * @return void No value is returned.
      */
-    public function push(string $fd,string $message)
+    public function push( $fd, $message)
     {
         $this->server->push($fd, $message);
     }
@@ -43,7 +43,7 @@ class Chat_Realization_Handler
      * @param string $fd
      * @return void No value is returned.
      */
-    public function close(string $fd)
+    public function close( $fd)
     {
        $this->server->close($fd);
     }
